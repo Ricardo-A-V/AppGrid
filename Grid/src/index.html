@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbaloo Pro</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div data-tauri-drag-region class="custom-titlebar" id="titlebar">
+        <!-- Nuevo botón de fondo -->
+        <button id="bg-btn" class="window-control" style="display: none;">🖼️</button>
+        <button id="add-btn" class="window-control" style="display: none;">➕</button>
+        <button id="edit-btn" class="window-control">✎</button>
+        <button id="fullscreen-btn" class="window-control">⛶</button>
+        <button id="close-btn" class="window-control">✕</button>
+    </div>
+
+    <div class="grid-container" id="grid"></div>
+
+    <!-- Modal Fondo Global -->
+    <dialog id="bg-modal">
+        <h3 style="margin-top: 0;">App Background</h3>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+            <input type="checkbox" id="global-gradient-cb" style="width: auto;">
+            <label style="margin: 0; font-size: 0.9em;">Custom Gradient</label>
+        </div>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <input type="color" id="global-bg-color1" value="#4b0082" style="padding:0; height: 35px; border:none; cursor:pointer;">
+            <input type="color" id="global-bg-color2" value="#00ffff" style="padding:0; height: 35px; border:none; cursor:pointer;">
+        </div>
+        <label>Or Custom Image File (PNG/JPG)</label>
+        <input type="file" id="global-bg-file" accept="image/*">
+        <button id="clear-global-bg-btn" style="background: #f9e2af; color: #1e1e2e; width: 100%; margin-top: 10px;">🧹 Reset to Default</button>
+        
+        <div class="modal-actions">
+            <button id="save-global-bg">Save</button>
+            <button id="cancel-global-bg" class="btn-red">Cancel</button>
+        </div>
+    </dialog>
+
+    <!-- Modal Add Element (Sin cambios) -->
+    <dialog id="add-modal">
+        <h3 style="margin-top: 0;">Add Element</h3>
+        <div id="target-inputs">
+            <button id="open-folder-btn" style="background: #89b4fa;">📂 Open Shortcuts Folder</button>
+            <select id="shortcut-select">
+                <option value="">-- Select local shortcut --</option>
+            </select>
+            <button id="refresh-shortcuts-btn" style="background: #313244;">🔄 Refresh</button>
+            <input type="text" id="url-input" placeholder="Or paste Web URL (https://...)">
+        </div>
+        <hr>
+        <label>Tile Size</label>
+        <select id="size-select">
+            <option value="1,1">1x1 (Small square)</option>
+            <option value="2,1">2x1 (Wide)</option>
+            <option value="1,2">1x2 (Tall)</option>
+            <option value="2,2">2x2 (Large)</option>
+            <option value="3,3">3x3 (Huge block)</option>
+        </select>
+        <label>Display Text (Leave blank for Icon-only)</label>
+        <input type="text" id="app-name" placeholder="Tile Label">
+        <div class="modal-actions">
+            <button id="save-new-app">Create Tile</button>
+            <button id="cancel-new-app" class="btn-red">Cancel</button>
+        </div>
+    </dialog>
+
+    <!-- Modal Customize Tile (Sin cambios) -->
+    <dialog id="edit-tile-modal">
+        <h3 style="margin-top: 0;">Customize Tile</h3>
+        <label>Edit Display Text</label>
+        <input type="text" id="edit-label-input" placeholder="New text...">
+        <label>Replace Icon / Custom Image (PNG/JPG)</label>
+        <input type="file" id="edit-icon-file" accept="image/*">
+        <hr>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+            <input type="checkbox" id="apply-gradient-cb" style="width: auto;">
+            <label style="margin: 0; font-size: 0.9em;">Apply Custom Gradient</label>
+        </div>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <input type="color" id="edit-bg-color1" value="#800080" style="padding:0; height: 35px; border:none; cursor:pointer;">
+            <input type="color" id="edit-bg-color2" value="#00ffff" style="padding:0; height: 35px; border:none; cursor:pointer;">
+        </div>
+        <label>Or Background Image File</label>
+        <input type="file" id="edit-bg-file" accept="image/*">
+        <button id="clear-bg-btn" style="background: #f9e2af; color: #1e1e2e; width: 100%; margin-top: 10px;">🧹 Reset to Default Glass</button>
+        <div class="modal-actions">
+            <button id="save-tile-edit">Save Changes</button>
+            <button id="cancel-tile-edit" class="btn-red">Cancel</button>
+        </div>
+    </dialog>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

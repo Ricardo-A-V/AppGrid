@@ -1,0 +1,21 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "productName": "SymbalooLauncher",
+  "version": "0.0.1",
+  "identifier": "com.symbaloolauncher.dev",
+  "build": {
+    "frontendDist": "../src"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Symbaloo Pro",
+        "width": 1200,
+        "height": 800,
+        "fullscreen": true,
+        "decorations": false
+      }
+    ]
+  }
+}
